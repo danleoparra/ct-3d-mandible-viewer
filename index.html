@@ -11,38 +11,110 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #1f2428;
+      color: #f2f2f2;
       text-align: center;
     }
 
     header {
-      padding: 16px;
       background: #ffffff;
-      border-bottom: 1px solid #ddd;
+      color: #222222;
+      padding: 18px 24px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .logo-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .logo-row img {
+      max-height: 70px;
+      max-width: 180px;
+      object-fit: contain;
     }
 
     h1 {
-      margin: 0;
-      font-size: 22px;
+      margin: 8px auto 6px auto;
+      max-width: 1000px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #222222;
     }
 
-    p {
+    .paper-title {
+      max-width: 1050px;
+      margin: 8px auto 0 auto;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333333;
+      font-style: italic;
+    }
+
+    .subtitle {
+      max-width: 900px;
+      margin: 10px auto 0 auto;
       font-size: 14px;
-      margin: 8px 20px;
+      line-height: 1.5;
+      color: #555555;
+    }
+
+    .viewer-section {
+      background: radial-gradient(circle, #3a3f44 0%, #1f2428 70%);
+      padding: 18px 0 10px 0;
     }
 
     model-viewer {
       width: 100%;
-      height: 80vh;
-      background-color: #ffffff;
+      height: 78vh;
+      background-color: transparent;
+    }
+
+    .instructions {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 24px 20px 24px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #e6e6e6;
     }
 
     footer {
-      padding: 10px;
+      background: #15191c;
+      color: #bfbfbf;
+      padding: 14px 24px;
       font-size: 12px;
-      color: #555;
+      line-height: 1.5;
+      border-top: 1px solid #333333;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      .paper-title {
+        font-size: 14px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+      }
+
+      .logo-row img {
+        max-height: 55px;
+        max-width: 140px;
+      }
+
+      model-viewer {
+        height: 70vh;
+      }
     }
   </style>
 </head>
@@ -50,22 +122,47 @@
 <body>
 
   <header>
-    <h1>Interactive 3D CT Reconstruction</h1>
-    <p>Use mouse or touchscreen gestures to rotate, zoom, and inspect the model.</p>
+    <div class="logo-row">
+      <img src="images/unesp_logo.png" alt="UNESP logo">
+      <img src="images/cirurgia_grandes_animais_logo.png" alt="Large Animal Surgery logo">
+    </div>
+
+    <h1>Interactive 3D CT Reconstruction of an Equine Mandibular Lesion</h1>
+
+    <p class="paper-title">
+      Massive mandibular osteolysis associated with ameloblastic carcinoma in a horse:
+      clinical, computed tomographic, necropsy, histopathological, and immunohistochemical findings
+    </p>
+
+    <p class="subtitle">
+      Three-dimensional reconstruction generated from computed tomography segmentation
+      to support spatial assessment of the affected mandibular region.
+    </p>
   </header>
 
-  <model-viewer
-    src="mandible_model.glb"
-    alt="Interactive 3D reconstruction generated from computed tomography"
-    camera-controls
-    auto-rotate
-    interaction-prompt="auto"
-    shadow-intensity="0.8"
-    exposure="1">
-  </model-viewer>
+  <section class="viewer-section">
+    <model-viewer
+      src="mandible_model.glb"
+      alt="Interactive 3D reconstruction generated from computed tomography segmentation"
+      camera-controls
+      auto-rotate
+      interaction-prompt="auto"
+      shadow-intensity="0.9"
+      exposure="0.9"
+      environment-image="neutral">
+    </model-viewer>
+
+    <div class="instructions">
+      Use mouse or touchscreen gestures to rotate, zoom, and inspect the model.
+      This interactive reconstruction is intended to complement the tomographic images
+      and facilitate three-dimensional anatomical interpretation.
+    </div>
+  </section>
 
   <footer>
-    3D reconstruction generated from CT segmentation. The model is provided for scientific visualization.
+    3D model derived from CT segmentation. Provided for scientific visualization only.<br>
+    Department of Veterinary Surgery and Animal Reproduction, School of Veterinary Medicine and Animal Science,
+    São Paulo State University — UNESP.
   </footer>
 
 </body>
